@@ -1,0 +1,26 @@
+<div style="max-width:720px">
+  <h2 style="margin-top:0">{{ id ? 'Edit' : 'New' }} Skill Category</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div style="margin-bottom:12px">
+      <label>Category *</label>
+      <select formControlName="category" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border)">
+        <option value="">-- choose category --</option>
+        <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+      </select>
+    </div>
+
+    <div style="margin-bottom:12px">
+      <label>Items (comma separated) *</label>
+      <input formControlName="items" placeholder="e.g. HTML, CSS, JavaScript" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border)" />
+      <small class="muted">Separate items with commas. They will be stored as an array.</small>
+    </div>
+
+    <div style="display:flex;gap:8px">
+      <button type="submit" style="padding:10px 14px;border-radius:8px;background:var(--primary);color:var(--primary-foreground);border:none">
+        Save
+      </button>
+      <a routerLink="/yawalad/skills" style="display:inline-block;padding:10px 14px;border-radius:8px;border:1px solid var(--border);text-decoration:none">Cancel</a>
+    </div>
+  </form>
+</div>

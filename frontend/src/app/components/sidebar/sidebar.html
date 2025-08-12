@@ -1,0 +1,50 @@
+<aside class="sidebar">
+  <!-- <div class="sidebar-header">
+    <div class="profile-section">
+      <div class="profile-image">
+        <img src="assets/placeholder.svg" alt="Mohamed Ibrahim" />
+      </div>
+      <h2>Mohamed Ibrahim</h2>
+      <p>Software Engineer</p>
+    </div>
+  </div> -->
+
+  <nav class="sidebar-nav">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-item">
+      <i-lucide name="user" style="width:20px; height:20px;"></i-lucide>
+      <span>About Me</span>
+    </a>
+
+    <a routerLink="/skills" routerLinkActive="active" class="nav-item">
+      <i-lucide name="code" style="width:20px; height:20px;"></i-lucide>
+      <span>Skills</span>
+    </a>
+
+    <a routerLink="/projects" routerLinkActive="active" class="nav-item">
+      <i-lucide name="briefcase" style="width:20px; height:20px;"></i-lucide>
+      <span>Projects</span>
+    </a>
+
+    <a routerLink="/experience" routerLinkActive="active" class="nav-item">
+      <i-lucide name="briefcase" style="width:20px; height:20px;"></i-lucide>
+      <span>Experience</span>
+    </a>
+
+    <a routerLink="/education" routerLinkActive="active" class="nav-item">
+      <i-lucide name="graduationCap" style="width:20px; height:20px;"></i-lucide>
+      <span>Education</span>
+    </a>
+
+    <a routerLink="/contact" routerLinkActive="active" class="nav-item">
+      <i-lucide name="mail" style="width:20px; height:20px;"></i-lucide>
+      <span>Contact</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <button (click)="toggleTheme()" class="theme-toggle" aria-label="Toggle theme">
+      <i-lucide name="{{ theme === 'light' ? 'Moon' : 'Sun' }}" style="width:20px; height:20px;"></i-lucide>
+      <span>{{ theme === 'light' ? 'Dark Mode' : 'Light Mode' }}</span>
+    </button>
+  </div>
+</aside>

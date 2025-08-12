@@ -1,0 +1,159 @@
+<div class="page-container">
+  <section class="hero-section">
+    <div class="hero-layout">
+      <div class="profile-section animate-fade-in">
+        <div class="profile-image-container">
+          <div class="profile-backdrop"></div>
+          <div class="profile-image-wrapper">
+            <!-- photo from api أو placeholder -->
+            <img [src]="(profile$ | async)?.photoUrl || 'assets/placeholder.svg'" alt="Profile image" />
+
+          </div>
+          <div class="profile-glow"></div>
+        </div>
+
+        <div class="floating-skills">
+          <div class="floating-card card-1">
+            <div class="card-icon">
+              <i-lucide name="code" style="width:20px;height:20px;"></i-lucide>
+            </div>
+            <div class="card-content">
+              <span class="card-title">Frontend</span>
+              <span class="card-subtitle">React & Modern JS</span>
+            </div>
+          </div>
+
+          <div class="floating-card card-2">
+            <div class="card-icon">
+              <i-lucide name="brain" style="width:20px;height:20px;"></i-lucide>
+            </div>
+            <div class="card-content">
+              <span class="card-title">Problem Solving</span>
+              <span class="card-subtitle">Algorithms & Logic</span>
+            </div>
+          </div>
+
+          <div class="floating-card card-3">
+            <div class="card-icon">
+              <i-lucide name="palette" style="width:20px;height:20px;"></i-lucide>
+            </div>
+            <div class="card-content">
+              <span class="card-title">UI/UX</span>
+              <span class="card-subtitle">Design & User Experience</span>
+            </div>
+          </div>
+
+          <div class="floating-card card-4">
+            <div class="card-icon">
+              <i-lucide name="users" style="width:20px;height:20px;"></i-lucide>
+            </div>
+            <div class="card-content">
+              <span class="card-title">Teaching</span>
+              <span class="card-subtitle">Knowledge Sharing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-content animate-slide-in" *ngIf="profile$ | async as profile">
+        <div class="hero-intro">
+          <div class="status-badge">
+            <div class="status-dot"></div>
+            <span>Available for work</span>
+          </div>
+
+          <h1 class="hero-title hero">
+            Hi, I'm <span class="gradient-text">{{ profile.name }}</span>
+          </h1>
+
+          <h2 class="hero-subtitle hero">{{ profile.title }}</h2>
+        </div>
+
+        <div class="hero-description hero">
+          <p *ngFor="let p of profile.description">{{ p }}</p>
+        </div>
+
+        <div class="hero-actions">
+          <button class="btn-primary" (click)="downloadResume(profile.resumeUrl)">
+            <i-lucide name="download" style="width:18px;height:18px;"></i-lucide>
+            Download Resume
+            <i-lucide name="arrow-right" style="width:16px;height:16px;"></i-lucide>
+          </button>
+
+          <a class="btn-secondary" href="mailto:{{ profile.email }}">
+            <i-lucide name="mail" style="width:18px;height:18px;"></i-lucide>
+            Let's Connect
+          </a>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i-lucide name="map-pin" style="width:18px;height:18px;"></i-lucide>
+            </div>
+            <div class="contact-details">
+              <span class="contact-label">Location</span>
+              <span class="contact-value">{{ profile.location }}</span>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i-lucide name="mail" style="width:18px;height:18px;"></i-lucide>
+            </div>
+            <div class="contact-details">
+              <span class="contact-label">Email</span>
+              <span class="contact-value">{{ profile.email }}</span>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i-lucide name="phone" style="width:18px;height:18px;"></i-lucide>
+            </div>
+            <div class="contact-details">
+              <span class="contact-label">Phone</span>
+              <span class="contact-value">{{ profile.phone }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-section">
+          <p class="social-title">Connect with me</p>
+          <div class="social-links">
+            <a [href]="profile.linkedin ?? 'https://linkedin.com'" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
+              <i-lucide name="linkedin" style="width:20px;height:20px;"></i-lucide>
+              <span>LinkedIn</span>
+            </a>
+            <a [href]="profile.github ?? 'https://github.com'" target="_blank" rel="noopener noreferrer" class="social-link github">
+              <i-lucide name="github" style="width:20px;height:20px;"></i-lucide>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="languages-showcase">
+          <h3>Languages</h3>
+          <div class="languages-grid">
+            <div class="language-card" *ngFor="let lang of profile.languages">
+              <span class="language-flag">🇪🇬</span>
+              <div class="language-info">
+                <span class="language-name">{{ lang.name }}</span>
+                <span class="language-level">{{ lang.level }}</span>
+              </div>
+              <div class="proficiency-bar">
+                <div class="proficiency-fill" [ngClass]="{ 'native': lang.level === 'Native', 'fluent': lang.level === 'Fluent' }"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #loading>
+        <div class="hero-content loading">
+          <p>Loading...</p>
+        </div>
+      </ng-template>
+    </div>
+  </section>
+</div>

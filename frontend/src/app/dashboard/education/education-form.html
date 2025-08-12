@@ -1,0 +1,37 @@
+<div style="max-width:760px">
+  <h2 style="margin-top:0">{{ id ? 'Edit' : 'New' }} Education</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div style="margin-bottom:12px">
+      <label>Degree *</label>
+      <input formControlName="degree" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border)" />
+    </div>
+
+    <div style="margin-bottom:12px">
+      <label>University *</label>
+      <input formControlName="university" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border)" />
+    </div>
+
+    <div style="margin-bottom:12px">
+      <label>Year *</label>
+      <input formControlName="year" placeholder="e.g. 2023" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border)" />
+    </div>
+
+    <div style="margin-bottom:12px">
+      <label>Description</label>
+      <textarea formControlName="description" rows="3" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border)"></textarea>
+    </div>
+
+    <div style="margin-bottom:12px">
+      <label>Courses (one per line, format: <em>Course name - description</em>)</label>
+      <textarea formControlName="coursesText" rows="6" placeholder="React Development - Advanced React patterns" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border)"></textarea>
+    </div>
+
+    <div style="display:flex;gap:8px">
+      <button type="submit" style="padding:10px 14px;border-radius:8px;background:var(--primary);color:var(--primary-foreground);border:none">
+        Save
+      </button>
+      <a routerLink="/yawalad/education" style="display:inline-block;padding:10px 14px;border-radius:8px;border:1px solid var(--border);text-decoration:none">Cancel</a>
+    </div>
+  </form>
+</div>

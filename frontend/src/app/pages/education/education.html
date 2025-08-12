@@ -1,0 +1,36 @@
+<div class="page-container" *ngIf="education() as edu">
+  <div class="page-header">
+    <h1>Education</h1>
+    <p>My academic background and learning journey</p>
+  </div>
+
+  <div class="education-content">
+    <!-- Main Education -->
+    <div class="education-card">
+      <div class="education-icon">
+        <img [src]="edu.photoUrl || 'assets/placeholder.svg'" alt="Education" />
+      </div>
+
+      <div class="education-details">
+        <h2>{{ edu.degree }}</h2>
+        <h3>{{ edu.university }}</h3>
+        <p class="education-status">{{ edu.year }}</p>
+
+        <div class="education-description">
+          <p>{{ edu.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional Learning -->
+    <div class="additional-learning" *ngIf="edu.courses.length > 0">
+      <h2>Additional Learning</h2>
+      <div class="learning-items">
+        <div class="learning-item" *ngFor="let course of edu.courses">
+          <h3>{{ course.name }}</h3>
+          <p>{{ course.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

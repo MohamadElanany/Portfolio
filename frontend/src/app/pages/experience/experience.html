@@ -1,0 +1,40 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1>Experience</h1>
+    <p>My professional journey and achievements</p>
+  </div>
+
+  <div class="experience-content">
+    <!-- Work Experience -->
+    <div class="experience-section">
+      <h2>Work Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item" *ngFor="let exp of experiences()">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>{{ exp.jobTitle }}</h3>
+            <p class="company">{{ exp.company }}</p>
+            <div class="experience-meta">
+              <span class="duration">
+                {{ exp.startDate | date:'MMM yyyy' }} -
+                {{ exp.endDate ? (exp.endDate | date:'MMM yyyy') : 'Ongoing' }}
+              </span>
+              <span class="type">{{ exp.description }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certificates & Achievements -->
+    <div class="experience-section">
+      <h2>Certificates & Achievements</h2>
+      <div class="achievements">
+        <div class="achievement-item" *ngFor="let achievement of achievements">
+          <div class="achievement-icon">🏆</div>
+          <span>{{ achievement }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

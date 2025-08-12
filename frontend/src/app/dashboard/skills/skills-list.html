@@ -1,0 +1,27 @@
+<div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+    <h2 style="margin:0">Skills</h2>
+    <a routerLink="/yawalad/skills/new" class="btn" style="padding:8px 12px;border-radius:8px;background:var(--primary);color:var(--primary-foreground);text-decoration:none">Add Category</a>
+  </div>
+
+  <table style="width:100%;border-collapse:collapse">
+    <thead>
+      <tr style="text-align:left;border-bottom:1px solid var(--border)">
+        <th style="padding:8px">Category</th>
+        <th style="padding:8px">Items</th>
+        <th style="padding:8px">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let s of (skills$ | async)" style="border-bottom:1px solid rgba(0,0,0,0.04)">
+        <td style="padding:8px;vertical-align:middle">{{ s.category }}</td>
+        <td style="padding:8px;vertical-align:middle">{{ (s.items || []).join(', ') }}</td>
+        <td style="padding:8px;vertical-align:middle">
+          <a [routerLink]="['/yawalad/skills', s._id]" style="margin-right:8px">Edit</a>
+          <button (click)="onDelete(s._id)" style="padding:6px 8px;border-radius:6px">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

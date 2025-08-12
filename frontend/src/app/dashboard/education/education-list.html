@@ -1,0 +1,33 @@
+<div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+    <h2 style="margin:0">Education</h2>
+    <a routerLink="/yawalad/education/new" class="btn" style="padding:8px 12px;border-radius:8px;background:var(--primary);color:var(--primary-foreground);text-decoration:none">Add Education</a>
+  </div>
+
+  <table style="width:100%;border-collapse:collapse">
+    <thead>
+      <tr style="text-align:left;border-bottom:1px solid var(--border)">
+        <th style="padding:8px">Degree</th>
+        <th style="padding:8px">University</th>
+        <th style="padding:8px">Year</th>
+        <th style="padding:8px">Courses</th>
+        <th style="padding:8px">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let e of (education$ | async)" style="border-bottom:1px solid rgba(0,0,0,0.04)">
+        <td style="padding:8px;vertical-align:middle">{{ e.degree }}</td>
+        <td style="padding:8px;vertical-align:middle">{{ e.university }}</td>
+        <td style="padding:8px;vertical-align:middle">{{ e.year }}</td>
+        <td style="padding:8px;vertical-align:middle;max-width:300px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
+          {{ getCourseNames(e) }}
+        </td>
+        <td style="padding:8px;vertical-align:middle">
+          <a [routerLink]="['/yawalad/education', e._id]" style="margin-right:8px">Edit</a>
+          <button (click)="onDelete(e._id)" style="padding:6px 8px;border-radius:6px">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

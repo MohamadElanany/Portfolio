@@ -1,0 +1,40 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1>Skills & Technologies</h1>
+    <p>Technologies and tools I work with to bring ideas to life</p>
+  </div>
+
+  <div class="skills-content">
+    <ng-container *ngIf="skillsMap$ | async as map; else skillsLoading">
+      <section class="skills-section" *ngFor="let cat of categoriesOrder">
+        <h2>{{ cat }}</h2>
+
+        <div class="skills-grid" *ngIf="map[cat] && map[cat].length; else emptyCategory">
+          <div *ngFor="let item of map[cat]" class="skill-item">
+            <i-lucide name="code" style="width:16px;height:16px;margin-right:8px;"></i-lucide>
+            {{ item }}
+          </div>
+        </div>
+
+        <ng-template #emptyCategory>
+          <p class="muted">No items for {{ cat }} yet.</p>
+        </ng-template>
+      </section>
+    </ng-container>
+
+    <ng-template #skillsLoading>
+      <p>Loading skills…</p>
+    </ng-template>
+
+    <section class="skills-section">
+      <h2>Experience Level</h2>
+      <div class="experience-info">
+        <p><strong>Years of Experience:</strong> <span *ngIf="years$ | async as y">{{ y }}</span></p>
+        <p>
+          I have gained practical experience through internships, personal projects, and teaching roles,
+          focusing on building real-world applications and solving complex problems.
+        </p>
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div style="max-width:800px">
+  <h2 style="margin-top:0">{{ id ? 'Edit' : 'New' }} Project</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div style="margin-bottom:12px">
+      <label>Title *</label>
+      <input formControlName="title" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border)" />
+    </div>
+
+    <div style="margin-bottom:12px">
+      <label>Description</label>
+      <textarea formControlName="description" rows="4" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border)"></textarea>
+    </div>
+
+    <div style="margin-bottom:12px">
+      <label>Tools (comma separated)</label>
+      <input formControlName="tools" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border)" />
+    </div>
+
+    <div style="display:flex;gap:12px;margin-bottom:12px">
+      <div style="flex:1">
+        <label>Demo URL</label>
+        <input formControlName="demo" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border)" />
+      </div>
+      <div style="flex:1">
+        <label>Repo URL</label>
+        <input formControlName="repo" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border)" />
+      </div>
+    </div>
+
+    <div style="margin-bottom:12px">
+      <label>Photo (optional)</label>
+      <input type="file" (change)="onFileChange($event)" />
+      <div *ngIf="existingImageUrl" style="margin-top:8px">
+        <small>Existing image:</small><br />
+        <img [src]="existingImageUrl" alt="existing" style="height:80px;border-radius:6px;object-fit:cover;margin-top:6px" />
+      </div>
+    </div>
+
+    <div style="display:flex;gap:8px">
+      <button type="submit" style="padding:10px 14px;border-radius:8px;background:var(--primary);color:var(--primary-foreground);border:none">
+        Save
+      </button>
+      <a routerLink="/yawalad/projects" style="display:inline-block;padding:10px 14px;border-radius:8px;border:1px solid var(--border);text-decoration:none">Cancel</a>
+    </div>
+  </form>
+</div>

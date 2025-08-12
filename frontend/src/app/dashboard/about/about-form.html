@@ -1,0 +1,54 @@
+<div style="max-width:820px">
+  <h2 style="margin-top:0">Edit Profile</h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div style="display:flex;gap:12px;margin-bottom:12px">
+      <div style="flex:1">
+        <label>Name *</label>
+        <input formControlName="name" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border)" />
+      </div>
+      <div style="flex:1">
+        <label>Title *</label>
+        <input formControlName="title" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border)" />
+      </div>
+    </div>
+
+    <div style="margin-bottom:12px">
+      <label>Description (each paragraph on new line)</label>
+      <textarea formControlName="description" rows="5" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border)"></textarea>
+    </div>
+
+    <div style="display:flex;gap:12px;margin-bottom:12px">
+      <div style="flex:1">
+        <label>Resume (URL)</label>
+        <input formControlName="resumeUrl" style="width:100%;padding:8px;border-radius:6px;border:1px solid var(--border)" />
+      </div>
+      <div style="flex:1">
+        <label>Photo (optional)</label>
+        <input type="file" (change)="onFileChange($event)" />
+        <div *ngIf="existingPhotoUrl" style="margin-top:8px">
+          <small>Existing photo:</small><br />
+          <img [src]="existingPhotoUrl" alt="photo" style="height:80px;border-radius:6px;object-fit:cover;margin-top:6px" />
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px">
+      <div><label>GitHub</label><input formControlName="github" /></div>
+      <div><label>LinkedIn</label><input formControlName="linkedin" /></div>
+      <div><label>Email</label><input formControlName="gmail" /></div>
+    </div>
+
+    <div style="display:flex;gap:12px;margin-bottom:12px">
+      <div style="flex:1"><label>Phone</label><input formControlName="phone" /></div>
+      <div style="flex:1"><label>Location</label><input formControlName="location" /></div>
+    </div>
+
+    <div style="display:flex;gap:8px">
+      <button type="submit" style="padding:10px 14px;border-radius:8px;background:var(--primary);color:var(--primary-foreground);border:none">
+        Save
+      </button>
+      <a routerLink="/yawalad" style="display:inline-block;padding:10px 14px;border-radius:8px;border:1px solid var(--border);text-decoration:none">Cancel</a>
+    </div>
+  </form>
+</div>
